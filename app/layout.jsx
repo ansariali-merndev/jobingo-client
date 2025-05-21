@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { Header } from "@/components/server-components/Header";
 import { shadesOfPurple } from "@clerk/themes";
+import { Footer } from "@/components/server-components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         >
           <Header />
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

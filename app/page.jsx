@@ -1,7 +1,9 @@
-export default function Home() {
+import { Home } from "../components/server-components/LandingPage";
+
+export default function HomePage() {
   return (
-    <section>
-      <h2>Home page</h2>
-    </section>
+    <>
+      <Home />
+    </>
   );
 }
