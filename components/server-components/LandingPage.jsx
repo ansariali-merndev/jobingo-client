@@ -31,9 +31,11 @@ export const Home = () => {
 
       {/* ---------------- Button Section -------------------- */}
       <div className="flex gap-4 justify-center mt-10 md:mt-16">
-        <Button variant={"glow"} size={"xl"}>
-          Find Job
-        </Button>
+        <Link href={"/find-job"}>
+          <Button variant={"glow"} size={"xl"}>
+            Find Job
+          </Button>
+        </Link>
         <Link href={"/post-job"}>
           <Button variant={"frosted"} size={"xl"}>
             Post a Job

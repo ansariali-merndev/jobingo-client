@@ -7,9 +7,12 @@ import {
   SelectValue,
 } from "../ui/select";
 
-export const SelectTag = ({ arr, category }) => {
+export const SelectTag = ({ arr, category, name, value, onChange }) => {
   return (
-    <Select>
+    <Select
+      value={value}
+      onValueChange={(value) => onChange({ target: { name, value } })}
+    >
       <SelectTrigger className={"w-full"}>
         <SelectValue placeholder={`Select a ${category}`} />
       </SelectTrigger>
