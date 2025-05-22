@@ -10,6 +10,8 @@ import { companyName, location } from "@/data/data";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { BarLoader } from "react-spinners";
+import { addJob } from "@/data/axios";
+import Swal from "sweetalert2";
 
 export default function PostJob() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -45,9 +47,22 @@ export default function PostJob() {
     }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data: ", inputPostJob);
+    const res = await addJob(inputPostJob);
+    console.log(res);
+    if (res.message === "success") {
+      Swal.fire({
+        icon: "success",
+        title: "Job Posted Successfully",
+        text: "Your job listing has been added and is now visible to applicants.",
+        background: "#2e265c",
+        color: "#ffffff",
+        iconColor: "#facc15",
+        showConfirmButton: true,
+      });
+    }
+    console.log(inputPostJob);
     setInputPostJob((prev) => ({
       ...prev,
       title: "",
