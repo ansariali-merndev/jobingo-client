@@ -10,6 +10,7 @@ import {
   AccordionItem,
 } from "../ui/accordion";
 import faq from "../../data/faq.json";
+import Link from "next/link";
 
 export const Home = () => {
   return (
@@ -33,9 +34,11 @@ export const Home = () => {
         <Button variant={"glow"} size={"xl"}>
           Find Job
         </Button>
-        <Button variant={"frosted"} size={"xl"}>
-          Post Job
-        </Button>
+        <Link href={"/post-job"}>
+          <Button variant={"frosted"} size={"xl"}>
+            Post a Job
+          </Button>
+        </Link>
       </div>
 
       {/* ------------ Carousel ---------------- */}
