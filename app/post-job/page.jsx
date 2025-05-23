@@ -49,6 +49,32 @@ export default function PostJob() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    // check data is empty or not
+    if (inputPostJob.location === "" || inputPostJob.company === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Please Select Location or City Name",
+        background: "#2e265c",
+        color: "#ffffff",
+        iconColor: "#facc15",
+        showConfirmButton: true,
+      });
+      return;
+    } else if (
+      inputPostJob.description === "" ||
+      inputPostJob.title === "" ||
+      inputPostJob.skills === ""
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "Please Select Required Fields",
+        background: "#2e265c",
+        color: "#ffffff",
+        iconColor: "#facc15",
+        showConfirmButton: true,
+      });
+      return;
+    }
     const res = await addJob(inputPostJob);
     if (res.message === "success") {
       Swal.fire({

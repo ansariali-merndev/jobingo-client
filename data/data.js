@@ -45,3 +45,26 @@ export const location = [
   "Vadodara",
   "Other",
 ];
+
+export const jobTitles = [
+  "Frontend Engineer",
+  "Backend Developer",
+  "Full Stack Developer",
+  "Software Engineer",
+  "DevOps Engineer",
+  "Mobile App Developer",
+  "UI/UX Designer",
+  "QA Engineer",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "Cloud Solutions Architect",
+  "Technical Support Engineer",
+  "Cybersecurity Analyst",
+  "Blockchain Developer",
+  "Game Developer",
+  "Database Administrator",
+  "AI Engineer",
+  "Product Manager",
+  "Web Developer",
+  "Systems Analyst",
+];
