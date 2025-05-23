@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import { Header } from "@/components/server-components/Header";
+import { Header } from "@/components/client-components/Header";
 import { shadesOfPurple } from "@clerk/themes";
 import { Footer } from "@/components/server-components/Footer";
 import { SavedJobProvider } from "@/context/SavedJobContext";
