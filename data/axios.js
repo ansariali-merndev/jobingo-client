@@ -25,7 +25,7 @@ export const getAllJob = async () => {
   }
 };
 
-export const savedJob = async (data) => {
+export const toggleSavedJob = async (data) => {
   try {
     const res = await instance.post("/saved-job", data);
     return res.data;

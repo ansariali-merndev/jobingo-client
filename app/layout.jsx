@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/server-components/Header";
 import { shadesOfPurple } from "@clerk/themes";
 import { Footer } from "@/components/server-components/Footer";
+import { SavedJobProvider } from "@/context/SavedJobContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,13 +24,15 @@ export default function RootLayout({ children }) {
       }}
     >
       <html lang="en">
-        <body
-          className={`${inter.className} container px-4 md:mx-8 dark text-white`}
-        >
-          <Header />
-          {children}
-          <Footer />
-        </body>
+        <SavedJobProvider>
+          <body
+            className={`${inter.className} container px-4 md:mx-8 dark text-white`}
+          >
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </SavedJobProvider>
       </html>
     </ClerkProvider>
   );

@@ -3,12 +3,14 @@
 import { Heart } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { getSavedJob, savedJob } from "@/data/axios";
+import { toggleSavedJob } from "@/data/axios";
 import Swal from "sweetalert2";
+import { useSavedJob } from "@/context/SavedJobContext";
 
 export const SaveBtn = ({ job_id }) => {
   const { isLoaded, isSignedIn, user } = useUser();
   const [userEmail, setUserEmail] = useState("");
+  const { savedJob, refetch } = useSavedJob();
 
   useEffect(() => {
     if (isLoaded) {
@@ -19,10 +21,11 @@ export const SaveBtn = ({ job_id }) => {
   }, [isLoaded, isSignedIn, user]);
 
   const handleSavedJob = async () => {
-    const res = await savedJob({ userEmail, job_id });
+    const res = await toggleSavedJob({ userEmail, job_id });
     if (res.message === "success") {
+      await refetch();
       Swal.fire({
-        title: "Saved Job Successfully",
+        title: "Updated Successfully",
         icon: "success",
         timer: 3000,
         showConfirmButton: false,
@@ -35,9 +38,15 @@ export const SaveBtn = ({ job_id }) => {
     }
   };
 
+  const isSaved = savedJob.includes(job_id);
+
   return (
     <div>
-      <Heart onClick={handleSavedJob} color="#fff" className="w-6 h-6" />
+      <Heart
+        onClick={handleSavedJob}
+        color={`${isSaved ? "red" : "#fff"}`}
+        className={`w-6 h-6 ${isSaved && "fill-red-600"}`}
+      />
     </div>
   );
 };
