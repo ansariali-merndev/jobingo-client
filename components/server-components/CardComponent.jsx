@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SaveBtn } from "../client-components/SaveButton";
 import { Button } from "../ui/button";
 import {
@@ -35,7 +36,9 @@ export const JobCard = ({ data }) => {
               </div>
             </CardContent>
             <CardFooter className={"flex gap-4"}>
-              <Button variant={"outline"}>View More Detail</Button>
+              <Link href={`/find-job/${_id}`}>
+                <Button variant={"outline"}>View More Detail</Button>
+              </Link>
               <SaveBtn job_id={_id} />
             </CardFooter>
           </Card>

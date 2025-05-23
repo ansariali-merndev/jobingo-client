@@ -44,3 +44,23 @@ export const getSavedJob = async (data) => {
     throw error;
   }
 };
+
+export const getJobById = async (data) => {
+  try {
+    const res = await instance.post("/getJobById", data);
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
+
+export const incrementApplicants = async (data) => {
+  try {
+    const res = await instance.post("/incr", data);
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
