@@ -50,7 +50,6 @@ export default function PostJob() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const res = await addJob(inputPostJob);
-    console.log(res);
     if (res.message === "success") {
       Swal.fire({
         icon: "success",
@@ -62,7 +61,6 @@ export default function PostJob() {
         showConfirmButton: true,
       });
     }
-    console.log(inputPostJob);
     setInputPostJob((prev) => ({
       ...prev,
       title: "",

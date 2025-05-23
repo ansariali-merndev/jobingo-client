@@ -1,3 +1,5 @@
+import { SaveBtn } from "../client-components/SaveButton";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -7,19 +9,38 @@ import {
   CardTitle,
 } from "../ui/card";
 
-export const JobCard = () => {
+export const JobCard = ({ data }) => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
-      </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
-    </Card>
+    <>
+      {data.map(
+        ({ title, _id, description, location, company, appilcants }, index) => (
+          <Card key={_id}>
+            <CardHeader>
+              <CardTitle>{title}</CardTitle>
+              <CardDescription className="h-30">{description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-gray-400 text-sm">
+                <div className="flex justify-between">
+                  <p>
+                    Location: <span>{location}</span>
+                  </p>
+                  <p>
+                    <span>{appilcants}</span> Applicant
+                  </p>
+                </div>
+                <p>
+                  Company: <span>{company}</span>
+                </p>
+              </div>
+            </CardContent>
+            <CardFooter className={"flex gap-4"}>
+              <Button variant={"outline"}>View More Detail</Button>
+              <SaveBtn job_id={_id} />
+            </CardFooter>
+          </Card>
+        )
+      )}
+    </>
   );
 };
