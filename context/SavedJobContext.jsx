@@ -9,11 +9,13 @@ const SavedJobContext = createContext();
 export const SavedJobProvider = ({ children }) => {
   const [savedJob, setSavedJob] = useState([]);
   const { isLoaded, isSignedIn, user } = useUser();
+  const [userEmail, setUserEmail] = useState("");
 
   const fetchSavedJob = async () => {
     if (isLoaded && isSignedIn && user) {
-      const userEmail = user?.primaryEmailAddress?.emailAddress;
-      if (userEmail) {
+      const email = user?.primaryEmailAddress?.emailAddress;
+      setUserEmail(email);
+      if (email) {
         const res = await getSavedJob({ userEmail });
         if (res.message === "success") {
           setSavedJob(res.data.map((job) => job.job_id));
@@ -29,6 +31,7 @@ export const SavedJobProvider = ({ children }) => {
   const value = {
     savedJob,
     refetch: fetchSavedJob,
+    userEmail,
   };
 
   return (

@@ -23,10 +23,12 @@ export default async function JobID({ params }) {
           <CardDescription>{description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-between text-xs md:text-sm text-gray-400">
-            <span>Comapny Name: {company}</span>
-            <span>{appilcants} Applicant</span>
-            <span>Location: {location}</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs md:text-sm text-gray-400">
+            <span className="text-start">Comapny Name: {company}</span>
+            <span className="text-end md:text-center">
+              {appilcants} Applicant
+            </span>
+            <span className="text-start md:text-end">Location: {location}</span>
           </div>
           <div className="my-4 text-sm text-gray-300">
             {skill.map((item, index) => (
@@ -35,7 +37,7 @@ export default async function JobID({ params }) {
           </div>
         </CardContent>
         <CardFooter>
-          <ApplyBtn id={id} />
+          <ApplyBtn id={id} job={data} />
         </CardFooter>
       </Card>
     </section>

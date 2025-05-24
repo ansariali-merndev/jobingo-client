@@ -2,7 +2,7 @@
 
 import { image } from "@/assets/assets";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Users } from "lucide-react";
 import Image from "next/image";
 
 export const Header = () => {
@@ -24,6 +24,11 @@ export const Header = () => {
                 label="Saved Job"
                 href="/saved-job"
                 labelIcon={<Bookmark className="w-4 h-4" />}
+              />
+              <UserButton.Link
+                label="My-Applicants"
+                href="./my-applicants"
+                labelIcon={<Users className="w-4 h-4" />}
               />
             </UserButton.MenuItems>
           </UserButton>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.URL,
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 
@@ -58,6 +58,26 @@ export const getJobById = async (data) => {
 export const incrementApplicants = async (data) => {
   try {
     const res = await instance.post("/incr", data);
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
+
+export const applyToJob = async (data) => {
+  try {
+    const res = await instance.post("/applicants", data);
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
+
+export const getApplicantsByUserEmail = async (data) => {
+  try {
+    const res = await instance.post("/applicantByUser", data);
     return res.data;
   } catch (error) {
     console.log("Error: ", error.message);
