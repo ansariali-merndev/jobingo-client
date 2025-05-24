@@ -1,8 +1,7 @@
 import axios from "axios";
 
-console.log("Base URL: ", process.env.NEXT_PUBLIC_URL);
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_URL,
+  baseURL: "https://jobingo-server.onrender.com",
   withCredentials: true,
 });
 
